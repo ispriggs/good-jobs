@@ -35,7 +35,7 @@
       <button id="mobileMenuBtn" class="md:hidden px-3 py-2 bg-gray-100 rounded-md" type="button">Menu</button>
     </div>
 
-    <!-- MOBILE MENU (kept exactly as your structure implied) -->
+    <!-- MOBILE MENU -->
     <div id="mobileMenu" class="hidden md:hidden bg-white border-t shadow-sm">
       <div class="px-6 py-4 flex flex-col gap-3 text-gray-700">
         <a href="#services">Services</a>
@@ -144,9 +144,9 @@
         <p class="text-gray-600 mt-2">Post your task, pick a date, and pay after the job.</p>
 
         <div class="grid md:grid-cols-3 gap-6 mt-10">
-          <div class="p-6 bg-gray-50 rounded-xl border text-center">1<br><span class="font-semibold">Describe task</span></div>
-          <div class="p-6 bg-gray-50 rounded-xl border text-center">2<br><span class="font-semibold">Choose date</span></div>
-          <div class="p-6 bg-gray-50 rounded-xl border text-center">3<br><span class="font-semibold">Confirm & job done</span></div>
+          <div class="p-6 bg-gray-50 rounded-xl border text-center">1<br><span class="font-semibold">Choose an avaliable date</span></div>
+          <div class="p-6 bg-gray-50 rounded-xl border text-center">2<br><span class="font-semibold">Whatss App me with the date and task description</span></div>
+          <div class="p-6 bg-gray-50 rounded-xl border text-center">3<br><span class="font-semibold">What for me to confirm</span></div>
         </div>
       </div>
     </section>
@@ -180,25 +180,19 @@
     <section id="contact" class="py-16 bg-gray-50">
       <div class="max-w-3xl mx-auto px-6">
         <h2 class="text-2xl font-bold text-center">Book a task</h2>
-        <p class="text-gray-600 text-center mt-2">Tell me what you need and your preferred date — I’ll confirm by email.</p>
+        <p class="text-gray-600 text-center mt-2">Contact me directly on WhatsApp to book your task instantly.</p>
 
-        <!-- YOUR FORM LEFT EXACTLY AS-IS -->
-        <form id="bookingForm" class="mt-8 bg-white p-8 rounded-xl shadow space-y-4" 
-              action="mailto:your-email@example.com" method="POST" enctype="text/plain">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <input type="text" name="name" placeholder="Your name" required class="p-3 border rounded-lg" />
-            <input type="email" name="email" placeholder="Email" required class="p-3 border rounded-lg" />
-          </div>
+        <!-- WHATSAPP CONTACT BOX -->
+        <div class="mt-8 bg-white p-8 rounded-xl shadow text-center space-y-6">
+          <p class="text-lg text-gray-700">Tap below to message me on WhatsApp:</p>
 
-          <textarea name="task" rows="4" placeholder="Describe your task" required class="w-full p-3 border rounded-lg"></textarea>
+          <a href="https://wa.me/50672804257" target="_blank"
+             class="inline-block px-6 py-4 bg-green-600 text-white text-lg rounded-lg shadow font-semibold">
+            💬 Contact Me on WhatsApp
+          </a>
 
-          <div class="grid sm:grid-cols-2 gap-4">
-            <input id="dateInput" type="date" name="date" required class="p-3 border rounded-lg" />
-            <input type="text" name="postcode" placeholder="Postcode or city" class="p-3 border rounded-lg" />
-          </div>
-
-          <button type="submit" class="w-full bg-green-600 text-white py-3 rounded-lg font-semibold">Send request</button>
-        </form>
+          <p class="text-sm text-gray-500">Available daily — replies usually within minutes.</p>
+        </div>
       </div>
     </section>
 
@@ -208,6 +202,12 @@
   <footer class="py-10 bg-white border-t text-center text-sm text-gray-500">
     © <span id="year"></span> Good Jobs — Handyman Ian
   </footer>
+
+  <!-- FLOATING WHATSAPP BUTTON -->
+  <a href="https://wa.me/50672804257" target="_blank"
+     style="position: fixed; bottom: 20px; right: 20px; background-color:#25D366; color: white; padding:16px; border-radius:50%; font-size:28px; text-decoration:none; box-shadow:0 4px 10px rgba(0,0,0,0.3); z-index:999;">
+    💬
+  </a>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
@@ -224,7 +224,6 @@
       mobileMenu.classList.add('hidden');
     });
 
-    /* BOOK NOW */
     document.getElementById('bookNow').addEventListener('click', () => {
       document.getElementById('contact').scrollIntoView({behavior:'smooth'});
     });
@@ -236,14 +235,13 @@
       setInterval(()=>{ i=(i+1)%total; slider.style.transform = `translateX(-${i*100}%)`; },3500);
     })();
 
-    /* MONTH CALENDAR FIX — NOTHING REMOVED */
+    /* MONTH CALENDAR FIX (unchanged) */
     const monthGrid = document.getElementById('monthGrid');
     const monthLabel = document.getElementById('monthLabel');
     const prevBtn = document.getElementById('prevMonth');
     const nextBtn = document.getElementById('nextMonth');
 
     if (monthGrid && monthLabel && prevBtn && nextBtn) {
-      /* ---- YOUR ORIGINAL CODE RUNS HERE SAFELY ---- */
       let viewDate = new Date();
       const saved = JSON.parse(localStorage.getItem('gj_availability') || '{}');
       let selectedDate = null;
